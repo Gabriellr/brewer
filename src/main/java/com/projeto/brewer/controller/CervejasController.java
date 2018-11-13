@@ -14,27 +14,25 @@ import com.projeto.brewer.model.Cerveja;
 
 @Controller
 public class CervejasController {
-	
+
 	private static final Logger logger = LoggerFactory.getLogger(CervejasController.class);
 
 	@RequestMapping("/cadastro/novo")
 	public String novo(Cerveja cerveja) {
-		
-		logger.error("Aqui e um log de erro");
-		
+
 		return "usuario/CadastroUsuario";
 	}
-	
+
 	@RequestMapping(value = "/cadastro/novo", method = RequestMethod.POST)
 	public String cadastrar(@Validated Cerveja cerveja, BindingResult result, Model model, RedirectAttributes attributes) {
 		if(result.hasErrors()){
-			
+
 			return novo(cerveja);
-			
+
 		}
 		attributes.addFlashAttribute("mensagem", "Cerveja salva com sucesso");
 		System.out.println(">>> sku: " + cerveja.getSku());
 		return "redirect:/cadastro/novo";
 	}
-	
+
 }
