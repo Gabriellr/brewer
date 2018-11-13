@@ -1,5 +1,7 @@
 package com.projeto.brewer.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -12,9 +14,14 @@ import com.projeto.brewer.model.Cerveja;
 
 @Controller
 public class CervejasController {
+	
+	private static final Logger logger = LoggerFactory.getLogger(CervejasController.class);
 
 	@RequestMapping("/cadastro/novo")
-	public String novo(Cerveja cerveja) {	
+	public String novo(Cerveja cerveja) {
+		
+		logger.error("Aqui e um log de erro");
+		
 		return "usuario/CadastroUsuario";
 	}
 	
