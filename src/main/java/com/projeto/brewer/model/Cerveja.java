@@ -145,6 +145,8 @@ public class Cerveja {
 		} else if (!codigo.equals(other.codigo))
 			return false;
 		return true;
+		
+		//terminar a classe ainda hoje
 	}
 		
 	
