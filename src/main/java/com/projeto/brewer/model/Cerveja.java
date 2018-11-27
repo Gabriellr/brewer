@@ -15,6 +15,8 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
+import com.projeto.brewer.validation.SKU;
+
 
 @Entity
 @Table(name = "cerveja")
@@ -25,6 +27,7 @@ public class Cerveja {
 	private Long codigo;
 	
 	
+	@SKU
 	@NotBlank(message= "SKU e obrigatorio")
 	private String sku;
 	
