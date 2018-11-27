@@ -13,7 +13,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.projeto.brewer.model.Cerveja;
 import com.projeto.brewer.model.Origem;
 import com.projeto.brewer.model.Sabor;
-import com.projeto.brewer.repositry.Cervejas;
 import com.projeto.brewer.repositry.Estilos;
 
 @Controller
@@ -34,13 +33,19 @@ public class CervejasController {
 
 	@RequestMapping(value = "/cervejas/novo", method = RequestMethod.POST)
 	public ModelAndView cadastrar(@Validated Cerveja cerveja, BindingResult result, Model model, RedirectAttributes attributes) {
-		if(result.hasErrors()){
+		/*if(result.hasErrors()){
 
-			return novo(cerveja);
-
-		}
+			return novo(cerveja); 
+		}*/
 		attributes.addFlashAttribute("mensagem", "Cerveja salva com sucesso");
 		System.out.println(">>> sku: " + cerveja.getSku());
+		System.out.println(">>sabor >" + cerveja.getSabor());
+		System.out.println(">>Origem >" + cerveja.getOrigem());
+		
+		if(cerveja.getEstilo() != null)
+		
+		System.out.println(">>> Estilo:" + cerveja.getEstilo().getCodigo());
+		
 		return new ModelAndView("redirect:/cervejas/novo");
 	}
 

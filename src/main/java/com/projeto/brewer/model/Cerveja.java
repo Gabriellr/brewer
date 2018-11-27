@@ -39,7 +39,7 @@ public class Cerveja {
 	private BigDecimal valor;
 	
 	@Column(name = "teor_alcoolico")
-	private BigDecimal teorAcoolico;
+	private BigDecimal teorAlcoolico;
 	
 	private BigDecimal comissao;
 	
@@ -87,11 +87,11 @@ public class Cerveja {
 	public void setValor(BigDecimal valor) {
 		this.valor = valor;
 	}
-	public BigDecimal getTeorAcoolico() {
-		return teorAcoolico;
+	public BigDecimal getTeorAlcoolico() {
+		return teorAlcoolico;
 	}
-	public void setTeorAcoolico(BigDecimal teorAcoolico) {
-		this.teorAcoolico = teorAcoolico;
+	public void setTeorAlcoolico(BigDecimal teorAcoolico) {
+		this.teorAlcoolico = teorAcoolico;
 	}
 	public BigDecimal getComissao() {
 		return comissao;
