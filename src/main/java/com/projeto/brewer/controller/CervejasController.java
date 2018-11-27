@@ -14,6 +14,7 @@ import com.projeto.brewer.model.Cerveja;
 import com.projeto.brewer.model.Origem;
 import com.projeto.brewer.model.Sabor;
 import com.projeto.brewer.repositry.Estilos;
+import com.projeto.brewer.service.CadastroCervejaService;
 
 @Controller
 public class CervejasController {
@@ -21,31 +22,28 @@ public class CervejasController {
 	@Autowired
 	private Estilos estilos;
 	
+	@Autowired
+	private CadastroCervejaService cadastroCervejaService;
+
 	@RequestMapping("/cervejas/novo")
 	public ModelAndView novo(Cerveja cerveja) {
 		ModelAndView mv = new ModelAndView("cerveja/CadastroCerveja");
-	 mv.addObject("sabores", Sabor.values());
-	 mv.addObject("estilos", estilos.findAll());
-	 mv.addObject("origens", Origem.values());
+		mv.addObject("sabores", Sabor.values());
+		mv.addObject("estilos", estilos.findAll());
+		mv.addObject("origens", Origem.values());
 
 		return mv;
 	}
 
 	@RequestMapping(value = "/cervejas/novo", method = RequestMethod.POST)
 	public ModelAndView cadastrar(@Validated Cerveja cerveja, BindingResult result, Model model, RedirectAttributes attributes) {
-		/*if(result.hasErrors()){
-
+		if(result.hasErrors()){
 			return novo(cerveja); 
-		}*/
+		}
+		
+		
+		cadastroCervejaService.salvar(cerveja);
 		attributes.addFlashAttribute("mensagem", "Cerveja salva com sucesso");
-		System.out.println(">>> sku: " + cerveja.getSku());
-		System.out.println(">>sabor >" + cerveja.getSabor());
-		System.out.println(">>Origem >" + cerveja.getOrigem());
-		
-		if(cerveja.getEstilo() != null)
-		
-		System.out.println(">>> Estilo:" + cerveja.getEstilo().getCodigo());
-		
 		return new ModelAndView("redirect:/cervejas/novo");
 	}
 
