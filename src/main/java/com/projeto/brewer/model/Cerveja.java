@@ -39,6 +39,7 @@ public class Cerveja {
 	@NotBlank(message= "Nome e obrigatorio")
 	private String nome;
 	
+	@NotNull(message = "Obriatorio digita uma descricao")
 	@Size(min = 1, max=50, message = "o tamanho da descricao deve esta entre 1 e 50")
 	private String descricao;
 	
@@ -46,14 +47,17 @@ public class Cerveja {
 	@DecimalMin("0.01")
 	@DecimalMax(value = "99999.99", message = "O valor da cerveja nao pode ser maior que 99999.99")
 	private BigDecimal valor;
-	
+    
+	@NotNull(message = "Obriagatorio digitar um valor TeorAlcoolico")
 	@Column(name = "teor_alcoolico")
 	@DecimalMax(value = "99.9", message = "O valor do teor Acoolico nao deve ser maior que 99,9")
 	private BigDecimal teorAlcoolico;
 	
+	@NotNull(message = "Obrigatorio valor na comissao")
 	@DecimalMax(value = "100.0", message ="O valor da comissão nao deve ser maior que 100")
 	private BigDecimal comissao;
 	
+	@NotNull(message = "Obrigatorio quantidade de estoque")
 	@Max(value = 9999, message = "A quantidade em estoque nao deve ser maior 9.999")
 	@Column(name = "quantidade_estoque")
 	private Integer quantidadeEstoque;

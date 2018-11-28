@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 @SuppressWarnings("serial")
 @Entity
@@ -21,6 +23,10 @@ public class Estilo  implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long  codigo;
+	
+	@NotBlank(message = "O nome  obrigatorio")
+	@Size(max = 20, message = "O tamanho do nome nao pode ser maior que {max} caracteres")
+
 	private String nome;
 	
 	@OneToMany(mappedBy = "estilo")
