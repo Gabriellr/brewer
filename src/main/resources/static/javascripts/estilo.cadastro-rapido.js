@@ -22,12 +22,13 @@ $(function(){
 		$.ajax({
 			url:url,
 			method: 'POST',
-			contentType: 'application/json'
-			
-			
-			
-		})
+			contentType: 'application/json',
+			data: JSON.stringify({nome: nomeEstilo}),
+			error:  onErroSalvandoEstilo	
+		});
 	}
-	
+	function onErroSalvandoEstilo(){
+		console.log(arguments);
+	}
 	
 });

@@ -48,7 +48,9 @@ public class EstilosController {
 		return new ModelAndView("redirect:/estilos/novo");
 	}
 	@RequestMapping(value = "/estilos", method = RequestMethod.POST, consumes = { MediaType.APPLICATION_JSON_VALUE })
-	public void salvar(Estilo estilo){
+	public @ResponseBody ResponseEntity<?> salvar(@RequestBody Estilo estilo){
+		System.out.println(">>> estilo:" +estilo.getNome());
 		
+		return ResponseEntity.badRequest().body("Erro salvando estilo");
 	}
 }
